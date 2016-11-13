@@ -43,7 +43,10 @@ public class AverageImageDifferencesTest {
 
 	@Test
 	public void checkForDifferences_withTwoDifferentSizeImage() throws Exception {
-		final AverageImageDifferences diff = new AverageImageDifferences(referenceImage, new BufferedImage(12, 12, BufferedImage.TYPE_INT_RGB), 10, 2);
+		final AverageImageDifferences diff = new AverageImageDifferences(referenceImage,
+				new BufferedImage(12, 12, BufferedImage.TYPE_INT_RGB),
+				10,
+				2);
 		final DifferencesResult results = diff.checkForDifferences();
 		Assertions.assertThat(results.hasDifferences()).isTrue();
 		Assertions.assertThat(results.getPercentage()).isEqualTo(100);
@@ -59,7 +62,7 @@ public class AverageImageDifferencesTest {
 		);
 		final DifferencesResult results = diff.checkForDifferences();
 		Assertions.assertThat(results.hasDifferences()).isTrue();
-		Assertions.assertThat(results.getPercentage()).isEqualTo(100);
+		Assertions.assertThat(results.getPercentage()).isCloseTo(100, Offset.offset(2.0));
 		Assertions.assertThat(results.getThreshold()).isEqualTo(10);
 	}
 
@@ -68,7 +71,7 @@ public class AverageImageDifferencesTest {
 		final AverageImageDifferences diff = new AverageImageDifferences(referenceImage, alteredReferenceImage, 10, 1);
 		final DifferencesResult results = diff.checkForDifferences();
 		Assertions.assertThat(results.hasDifferences()).isTrue();
-		Assertions.assertThat(results.getPercentage()).isCloseTo(25.0, Offset.offset(0.1));
+		Assertions.assertThat(results.getPercentage()).isCloseTo(25.0, Offset.offset(0.2));
 		Assertions.assertThat(results.getThreshold()).isEqualTo(10);
 	}
 
@@ -77,7 +80,7 @@ public class AverageImageDifferencesTest {
 		final AverageImageDifferences diff = new AverageImageDifferences(referenceImage, alteredReferenceImage, 26, 1);
 		final DifferencesResult results = diff.checkForDifferences();
 		Assertions.assertThat(results.hasDifferences()).isFalse();
-		Assertions.assertThat(results.getPercentage()).isCloseTo(25.0, Offset.offset(0.1));
+		Assertions.assertThat(results.getPercentage()).isCloseTo(25.0, Offset.offset(0.2));
 		Assertions.assertThat(results.getThreshold()).isEqualTo(26);
 	}
 

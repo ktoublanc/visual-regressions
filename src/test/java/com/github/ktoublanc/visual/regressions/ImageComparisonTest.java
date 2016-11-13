@@ -29,7 +29,7 @@ public class ImageComparisonTest {
 				.build();
 		final ImageComparison.ComparisonResults results = comparison.compare();
 		assertThat(results.isSameImage()).isFalse();
-		assertThat(results.getDifferencePercentage()).isCloseTo(3.98, Offset.offset(0.1));
+		assertThat(results.getDifferencePercentage()).isCloseTo(2.68, Offset.offset(0.1));
 		assertThat(results.getThreshold()).isEqualTo(0);
 
 		final BufferedImage comparedImageWithDifferences = results.getComparedImageWithDifferences();
@@ -65,7 +65,7 @@ public class ImageComparisonTest {
 				.build();
 		final ImageComparison.ComparisonResults results = comparison.compare();
 		assertThat(results.isSameImage()).isFalse();
-		assertThat(results.getDifferencePercentage()).isCloseTo(4.8, Offset.offset(0.1));
+		assertThat(results.getDifferencePercentage()).isCloseTo(3.13, Offset.offset(0.1));
 		assertThat(results.getThreshold()).isEqualTo(0);
 
 		final BufferedImage comparedImageWithDifferences = results.getComparedImageWithDifferences();
@@ -106,7 +106,7 @@ public class ImageComparisonTest {
 				.build();
 		final ImageComparison.ComparisonResults results = comparison.compare();
 		assertThat(results.isSameImage()).isTrue();
-		assertThat(results.getDifferencePercentage()).isCloseTo(3.98, Offset.offset(0.1));
+		assertThat(results.getDifferencePercentage()).isCloseTo(2.68, Offset.offset(0.1));
 		assertThat(results.getThreshold()).isEqualTo(5);
 		assertThat(results.getComparedImageWithDifferences()).isNull();
 		assertThat(results.getReferenceImageWithDifferences()).isNull();

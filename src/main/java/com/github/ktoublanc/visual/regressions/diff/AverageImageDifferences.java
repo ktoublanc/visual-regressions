@@ -49,7 +49,7 @@ public class AverageImageDifferences implements ImageDifferences {
 		for (int x = 0; x < maxImageWidth; x++) {
 			for (int y = 0; y < maxImageHeight; y++) {
 				if (y >= minImageHeight || x >= minImageWidth) {
-					differencesMap.addDifference(x, y, 1d);
+					differencesMap.addDifference(x, y, 100d);
 				} else {
 					double difference = getDifference(minImageWidth, minImageHeight, x, y);
 					differencesMap.addDifference(x, y, difference);
@@ -78,7 +78,7 @@ public class AverageImageDifferences implements ImageDifferences {
 			}
 		}
 
-		return distance / pixelCount / 0xffffff;
+		return distance / pixelCount / 0xffffff * 100.0;
 	}
 
 	private long distance(final int x, final int y) {
