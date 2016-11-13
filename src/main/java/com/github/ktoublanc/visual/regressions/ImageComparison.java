@@ -1,7 +1,6 @@
 package com.github.ktoublanc.visual.regressions;
 
 import com.github.ktoublanc.visual.regressions.diff.ImageDifferences;
-import com.github.ktoublanc.visual.regressions.diff.ImageDifferencesException;
 import com.github.ktoublanc.visual.regressions.model.DifferencesMap;
 import com.github.ktoublanc.visual.regressions.model.DifferencesResult;
 
@@ -31,17 +30,9 @@ public class ImageComparison {
 	 * Compare images.
 	 *
 	 * @return a initialized {@link ComparisonResults} instance representing the results of the image comparison.
-	 * @throws ImageComparisonException on non recoverable comparison exceptions
 	 */
-	public ComparisonResults compare() throws ImageComparisonException {
-
-		final DifferencesResult imageDifferencesResult;
-		try {
-			imageDifferencesResult = imageDifferences.checkForDifferences();
-		} catch (ImageDifferencesException e) {
-			throw new ImageComparisonException("Unable to process image differences", e);
-		}
-
+	public ComparisonResults compare() {
+		final DifferencesResult imageDifferencesResult = imageDifferences.checkForDifferences();
 		return new ComparisonResults(imageDifferencesResult);
 	}
 

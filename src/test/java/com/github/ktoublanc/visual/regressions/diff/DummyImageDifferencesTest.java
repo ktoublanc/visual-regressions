@@ -40,10 +40,13 @@ public class DummyImageDifferencesTest {
 		Assertions.assertThat(results.getThreshold()).isEqualTo(0);
 	}
 
-	@Test(expected = ImageDifferencesException.class)
+	@Test
 	public void checkForDifferences_withTwoDifferentSizeImage() throws Exception {
 		final DummyImageDifferences diff = new DummyImageDifferences(referenceImage, new BufferedImage(12, 12, BufferedImage.TYPE_INT_RGB), 0);
-		diff.checkForDifferences();
+		final DifferencesResult results = diff.checkForDifferences();
+		Assertions.assertThat(results.hasDifferences()).isTrue();
+		Assertions.assertThat(results.getPercentage()).isEqualTo(100.0);
+		Assertions.assertThat(results.getThreshold()).isEqualTo(0);
 	}
 
 	@Test

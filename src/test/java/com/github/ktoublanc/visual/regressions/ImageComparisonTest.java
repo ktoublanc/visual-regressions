@@ -50,14 +50,6 @@ public class ImageComparisonTest {
 
 	}
 
-	@Test(expected = ImageComparisonException.class)
-	public void compareDummyDifferencesImagesNotSameSize() throws Exception {
-		new ImageComparisonBuilder(referenceImage, new BufferedImage(10, 10, BufferedImage.TYPE_INT_RGB))
-				.withAnalysingRectangle(1)
-				.build()
-				.compare();
-	}
-
 	@Test
 	public void compareWith3pixRectangle() throws Exception {
 		ImageComparison comparison = new ImageComparisonBuilder(referenceImage, comparedImage)

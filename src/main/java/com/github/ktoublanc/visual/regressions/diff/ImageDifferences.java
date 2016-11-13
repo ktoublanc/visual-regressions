@@ -20,5 +20,5 @@ public interface ImageDifferences {
 	 * @return an initialized {@link DifferencesResult} instance containing the results of the comparison.
 	 * @throws ImageDifferencesException on not recoverable exceptions
 	 */
-	DifferencesResult checkForDifferences() throws ImageDifferencesException;
+	DifferencesResult checkForDifferences();
 }
