@@ -46,7 +46,7 @@ public class DifferencesMap {
 	/**
 	 * Add difference to map.
 	 * <p>
-	 * If difference <= 0 nothing is added to map.
+	 * If difference &lt;= 0 nothing is added to map.
 	 * <p>
 	 *
 	 * @param x          the x position

@@ -35,8 +35,10 @@ public class DifferencesResult {
 	/**
 	 * Public constructor of the POJO class taking two parameters.
 	 *
-	 * @param threshold  The threshold of the image difference process.
+	 * @param threshold      The threshold of the image difference process.
 	 * @param differencesMap The result difference map of the process.
+	 * @param referenceImage The reference image.
+	 * @param comparedImage  The compared image.
 	 */
 	public DifferencesResult(final Integer threshold, final DifferencesMap differencesMap,
 	                         final BufferedImage referenceImage, final BufferedImage comparedImage) {
@@ -78,6 +80,7 @@ public class DifferencesResult {
 
 	/**
 	 * Difference map getter method
+	 *
 	 * @return the {@link #differencesMap}
 	 */
 	public DifferencesMap getDifferencesMap() {
@@ -86,6 +89,7 @@ public class DifferencesResult {
 
 	/**
 	 * Compared image getter method
+	 *
 	 * @return the #comparedImage
 	 */
 	public BufferedImage getComparedImage() {
@@ -94,6 +98,7 @@ public class DifferencesResult {
 
 	/**
 	 * Reference image getter method
+	 *
 	 * @return the {@link #referenceImage}
 	 */
 	public BufferedImage getReferenceImage() {

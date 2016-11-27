@@ -18,7 +18,6 @@ public interface ImageDifferences {
 	 * Checks for differences between images.
 	 *
 	 * @return an initialized {@link DifferencesResult} instance containing the results of the comparison.
-	 * @throws ImageDifferencesException on not recoverable exceptions
 	 */
 	DifferencesResult checkForDifferences();
 }

@@ -3,6 +3,8 @@ package com.github.ktoublanc.visual.regressions.diff;
 import java.awt.image.BufferedImage;
 
 /**
+ * Average image difference implementation.
+ * <p>
  * Created by ktoublanc on 06/11/2016.
  */
 public class AverageImageDifferences extends AbstractImageDifferences implements ImageDifferences {
@@ -15,6 +17,7 @@ public class AverageImageDifferences extends AbstractImageDifferences implements
 	 *
 	 * @param referenceImage The reference image
 	 * @param comparedImage  The compared image
+	 * @param threshold           The difference threshold
 	 * @param size           The analysing rectangle size
 	 */
 	public AverageImageDifferences(final BufferedImage referenceImage, final BufferedImage comparedImage, final int threshold, final int size) {
