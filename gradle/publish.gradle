@@ -41,8 +41,18 @@ artifactory {
     }
 }
 
+task deploySelector() {
+    afterEvaluate {
+        if (project.version.endsWith('-SNAPSHOT')) {
+            deploy.finalizedBy artifactoryPublish
+        } else {
+            deploy.finalizedBy bintrayUpload
+        }
+    }
+}
 task deploy() {
-    dependsOn artifactoryPublish
+    dependsOn deploySelector, check
 }
 
-deploy.mustRunAfter build
+artifactoryPublish.mustRunAfter check
+bintrayUpload.mustRunAfter check
