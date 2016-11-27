@@ -1,7 +1,12 @@
 plugins {
+    id "com.jfrog.bintray" version "1.7"
+    id "com.jfrog.artifactory" version "4.4.0"
+    id 'maven-publish'
     id 'java'
     id 'idea'
 }
+
+apply from: 'gradle/publish.gradle'
 
 group 'com.github.ktoublanc.vregressions'
 version '1.0.0-SNAPSHOT'

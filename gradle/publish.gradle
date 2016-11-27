@@ -1,0 +1,49 @@
+
+publishing {
+    publications {
+        MYPublication(MavenPublication) {
+            from components.java
+            groupId 'com.github.ktoublanc.vregressions'
+            artifactId rootProject.name
+            version project.version
+        }
+    }
+}
+
+bintray {
+    publications = ['MYPublication']
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    pkg {
+        repo = 'Maven'
+        name = rootProject.name
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/ktoublanc/visual-regressions.git'
+        version {
+            name = project.version
+            desc = 'Visual Regressions'
+            released  = new Date()
+        }
+    }
+}
+
+artifactory {
+    contextUrl = "https://oss.jfrog.org/artifactory"
+    publish {
+        repository {
+            repoKey = 'oss-snapshot-local'
+            username = System.getenv('BINTRAY_USER')
+            password = System.getenv('BINTRAY_KEY')
+            maven = true
+        }
+        defaults {
+            publications ('MYPublication')
+        }
+    }
+}
+
+task deploy() {
+    dependsOn artifactoryPublish
+}
+
+deploy.mustRunAfter build

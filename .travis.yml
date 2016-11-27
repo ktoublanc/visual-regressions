@@ -2,3 +2,8 @@ language: java
 
 jdk:
  - oraclejdk8
+
+script:
+ - ./gradlew assemble
+ - ./gradlew check
+ - ./gradlew deploy
