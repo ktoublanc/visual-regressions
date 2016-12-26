@@ -13,13 +13,24 @@ bintray {
     publications = ['MYPublication']
     user = System.getenv('BINTRAY_USER')
     key = System.getenv('BINTRAY_KEY')
+    publish = true
+    override = false
     pkg {
         repo = 'Maven'
         name = rootProject.name
         licenses = ['MIT']
+        desc = 'Visual Regressions helper tools'
+        websiteUrl = 'https://github.com/ktoublanc/visual-regressions'
+        issueTrackerUrl = 'https://github.com/ktoublanc/visual-regressions/issues'
         vcsUrl = 'https://github.com/ktoublanc/visual-regressions.git'
+        githubRepo = 'ktoublanc/visual-regressions'
+        githubReleaseNotesFile = 'README.md'
+        publicDownloadNumbers = true
+
         version {
-            name = project.version
+            afterEvaluate {
+                name = project.version
+            }
             desc = 'Visual Regressions'
             released  = new Date()
         }
