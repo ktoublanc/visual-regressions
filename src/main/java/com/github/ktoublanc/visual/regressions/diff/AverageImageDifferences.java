@@ -1,6 +1,9 @@
 package com.github.ktoublanc.visual.regressions.diff;
 
 import java.awt.image.BufferedImage;
+import java.util.List;
+
+import com.github.ktoublanc.visual.regressions.model.Exclusion;
 
 /**
  * Average image difference implementation.
@@ -17,11 +20,13 @@ public class AverageImageDifferences extends AbstractImageDifferences implements
 	 *
 	 * @param referenceImage The reference image
 	 * @param comparedImage  The compared image
-	 * @param threshold           The difference threshold
+	 * @param threshold      The difference threshold
 	 * @param size           The analysing rectangle size
+	 * @param exclusions     The excluded part of the image
 	 */
-	public AverageImageDifferences(final BufferedImage referenceImage, final BufferedImage comparedImage, final int threshold, final int size) {
-		super(referenceImage, comparedImage, threshold);
+	public AverageImageDifferences(final BufferedImage referenceImage, final BufferedImage comparedImage,
+	                               final int threshold, final int size, final List<Exclusion> exclusions) {
+		super(referenceImage, comparedImage, threshold, exclusions);
 		this.size = size < 0 ? DEFAULT_RECT_SIZE : size;
 	}
 
@@ -38,6 +43,11 @@ public class AverageImageDifferences extends AbstractImageDifferences implements
 		double pixelCount = 0;
 		for (int x = minX; x <= maxX; x += 1) {
 			for (int y = minY; y <= maxY; y += 1) {
+
+				if (this.checkForExclusions(x, y)) {
+					continue;
+				}
+
 				distance += distance(x, y);
 				pixelCount++;
 			}
