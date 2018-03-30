@@ -41,7 +41,7 @@ public class ImageComparison {
 		private final BufferedImage referenceImageWithDifferences;
 		private final BufferedImage comparedImageWithDifferences;
 		private final Double differencePercentage;
-		private final Integer threshold;
+		private final Double threshold;
 
 		ComparisonResults(final DifferencesResult result) {
 			this.sameImage = !result.hasDifferences();
@@ -94,7 +94,7 @@ public class ImageComparison {
 			return differencePercentage;
 		}
 
-		public Integer getThreshold() {
+		public Double getThreshold() {
 			return threshold;
 		}
 	}

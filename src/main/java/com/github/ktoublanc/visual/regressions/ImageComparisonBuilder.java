@@ -1,13 +1,13 @@
 package com.github.ktoublanc.visual.regressions;
 
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.github.ktoublanc.visual.regressions.diff.AverageImageDifferences;
 import com.github.ktoublanc.visual.regressions.diff.DummyImageDifferences;
 import com.github.ktoublanc.visual.regressions.diff.ImageDifferences;
 import com.github.ktoublanc.visual.regressions.model.Exclusion;
+
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * {@link ImageComparison} builder class.
@@ -38,7 +38,7 @@ public class ImageComparisonBuilder {
 	/**
 	 * The difference percent threshold
 	 */
-	int threshold = 0;
+	double threshold = 0;
 
 	/**
 	 * Exclusion list for image difference processing
@@ -55,7 +55,7 @@ public class ImageComparisonBuilder {
 		this.comparedImage = comparedImage;
 	}
 
-	public ImageComparisonBuilder withThreshold(final int threshold) {
+	public ImageComparisonBuilder withThreshold(final double threshold) {
 		this.threshold = threshold;
 		return this;
 	}

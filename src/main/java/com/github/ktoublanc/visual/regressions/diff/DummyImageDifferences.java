@@ -1,9 +1,9 @@
 package com.github.ktoublanc.visual.regressions.diff;
 
+import com.github.ktoublanc.visual.regressions.model.Exclusion;
+
 import java.awt.image.BufferedImage;
 import java.util.List;
-
-import com.github.ktoublanc.visual.regressions.model.Exclusion;
 
 /**
  * Dummy implemetation of image differences interface
@@ -21,7 +21,7 @@ public class DummyImageDifferences extends AbstractImageDifferences implements I
 	 * @param exclusions         The excluded part of the image
 	 */
 	public DummyImageDifferences(final BufferedImage referenceImage, final BufferedImage comparedImage,
-	                             final Integer threshold, final List<Exclusion> exclusions) {
+	                             final double threshold, final List<Exclusion> exclusions) {
 		super(referenceImage, comparedImage, threshold, exclusions);
 	}
 

@@ -1,12 +1,12 @@
 package com.github.ktoublanc.visual.regressions.diff;
 
-import java.awt.image.BufferedImage;
-import java.util.List;
-import java.util.Objects;
-
 import com.github.ktoublanc.visual.regressions.model.DifferencesMap;
 import com.github.ktoublanc.visual.regressions.model.DifferencesResult;
 import com.github.ktoublanc.visual.regressions.model.Exclusion;
+
+import java.awt.image.BufferedImage;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by ktoublanc on 13/11/2016.
@@ -26,18 +26,17 @@ public abstract class AbstractImageDifferences implements ImageDifferences {
 	/**
 	 * The threshold percent of this image comparison
 	 */
-	protected final Integer threshold;
+	protected final double threshold;
 	private final List<Exclusion> exclusions;
 
 	/**
 	 * Builds a {@link ImageDifferences} class instances specifying the compared images and the analysing rectangle size
-	 *
-	 * @param referenceImage The reference image
+	 *  @param referenceImage The reference image
 	 * @param comparedImage  The compared image
 	 * @param threshold      The threshold
 	 * @param exclusions     The excluded part of the image
 	 */
-	public AbstractImageDifferences(final BufferedImage referenceImage, final BufferedImage comparedImage, final int threshold, final List<Exclusion> exclusions) {
+	public AbstractImageDifferences(final BufferedImage referenceImage, final BufferedImage comparedImage, final double threshold, final List<Exclusion> exclusions) {
 		Objects.requireNonNull(referenceImage, "Need an instantiated reference image parameter to process differences");
 		Objects.requireNonNull(comparedImage, "Need an instantiated compared image parameter to process differences");
 		if (threshold < 0) {

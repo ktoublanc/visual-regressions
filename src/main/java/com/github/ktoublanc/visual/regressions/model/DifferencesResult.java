@@ -11,7 +11,7 @@ public class DifferencesResult {
 	/**
 	 * The threshold used for the image difference processing.
 	 */
-	private final Integer threshold;
+	private final double threshold;
 	/**
 	 * The difference percentage
 	 */
@@ -34,13 +34,12 @@ public class DifferencesResult {
 
 	/**
 	 * Public constructor of the POJO class taking two parameters.
-	 *
-	 * @param threshold      The threshold of the image difference process.
+	 *  @param threshold      The threshold of the image difference process.
 	 * @param differencesMap The result difference map of the process.
 	 * @param referenceImage The reference image.
 	 * @param comparedImage  The compared image.
 	 */
-	public DifferencesResult(final Integer threshold, final DifferencesMap differencesMap,
+	public DifferencesResult(final double threshold, final DifferencesMap differencesMap,
 	                         final BufferedImage referenceImage, final BufferedImage comparedImage) {
 		this.threshold = threshold;
 		this.differencesMap = differencesMap;
@@ -65,7 +64,7 @@ public class DifferencesResult {
 	 *
 	 * @return the {@link #threshold}
 	 */
-	public Integer getThreshold() {
+	public Double getThreshold() {
 		return threshold;
 	}
 

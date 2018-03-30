@@ -1,17 +1,15 @@
 package com.github.ktoublanc.visual.regressions;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.assertj.core.data.Offset;
+import org.junit.Test;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.stream.IntStream;
 
-import org.assertj.core.data.Offset;
-import org.junit.Ignore;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
-@Ignore
 public class ImageComparisonTest {
 
 	private final BufferedImage referenceImage = ImageTools.imageFromPath(Paths.get("src/test/resources/reference.png"));
@@ -26,7 +24,7 @@ public class ImageComparisonTest {
 
 	@Test
 	public void compareWithDummyImplementation() throws Exception {
-		ImageComparison comparison = new ImageComparisonBuilder(referenceImage, comparedImage)
+		final ImageComparison comparison = new ImageComparisonBuilder(referenceImage, comparedImage)
 				.withAnalysingRectangle(1)
 				.build();
 		final ImageComparison.ComparisonResults results = comparison.compare();
@@ -54,7 +52,7 @@ public class ImageComparisonTest {
 
 	@Test
 	public void compareWith3pixRectangle() throws Exception {
-		ImageComparison comparison = new ImageComparisonBuilder(referenceImage, comparedImage)
+		final ImageComparison comparison = new ImageComparisonBuilder(referenceImage, comparedImage)
 				.withAnalysingRectangle(3)
 				.build();
 		final ImageComparison.ComparisonResults results = comparison.compare();
@@ -81,7 +79,7 @@ public class ImageComparisonTest {
 
 	@Test
 	public void compareSameImage() throws Exception {
-		ImageComparison comparison = new ImageComparisonBuilder(referenceImage, referenceImage)
+		final ImageComparison comparison = new ImageComparisonBuilder(referenceImage, referenceImage)
 				.withAnalysingRectangle(3)
 				.withThreshold(0)
 				.build();
@@ -95,7 +93,7 @@ public class ImageComparisonTest {
 
 	@Test
 	public void compareNoDifferencesDueToThreshold() throws Exception {
-		ImageComparison comparison = new ImageComparisonBuilder(referenceImage, comparedImage)
+		final ImageComparison comparison = new ImageComparisonBuilder(referenceImage, comparedImage)
 				.withThreshold(5)
 				.build();
 		final ImageComparison.ComparisonResults results = comparison.compare();
@@ -104,6 +102,19 @@ public class ImageComparisonTest {
 		assertThat(results.getThreshold()).isEqualTo(5);
 		assertThat(results.getComparedImageWithDifferences()).isNull();
 		assertThat(results.getReferenceImageWithDifferences()).isNull();
+	}
+
+	@Test
+	public void compareDifferencesDueToThresholdTooLow() throws Exception {
+		final ImageComparison comparison = new ImageComparisonBuilder(referenceImage, comparedImage)
+				.withThreshold(2.6833)
+				.build();
+		final ImageComparison.ComparisonResults results = comparison.compare();
+		assertThat(results.isSameImage()).isFalse();
+		assertThat(results.getDifferencePercentage()).isEqualTo(2.6833216694558546);
+		assertThat(results.getThreshold()).isEqualTo(2.6833);
+		assertThat(results.getComparedImageWithDifferences()).isNotNull();
+		assertThat(results.getReferenceImageWithDifferences()).isNotNull();
 	}
 
 }
