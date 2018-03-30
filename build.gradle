@@ -9,7 +9,7 @@ plugins {
 apply from: 'gradle/publish.gradle'
 
 group 'com.github.ktoublanc.vregressions'
-version '0.0.3'
+version '0.0.4-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
